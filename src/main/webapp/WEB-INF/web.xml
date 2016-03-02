@@ -1,0 +1,53 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>CodePamoja Attendance</display-name>
+
+	<servlet>
+		<servlet-name>cpDevelopers</servlet-name>
+		<servlet-class>org.codepamoja.lesson1.cpDevelopers</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cpDevelopers</servlet-name>
+		<url-pattern>/add_developer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>cpDevelopers</servlet-name>
+		<url-pattern>/add_attendance</url-pattern>
+	</servlet-mapping>
+
+	<security-constraint>
+		<display-name>Users Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Users Protected Area</web-resource-name>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/add_developer</url-pattern>
+
+			<http-method>DELETE</http-method>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>user</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Default login configuration uses form-based authentication -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>Form-Based Authentication Area</realm-name>
+		<form-login-config>
+			<form-login-page>/logon.jsp</form-login-page>
+			<form-error-page>/logonError.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<!-- Security roles referenced by this web application -->
+	<security-role>
+		<role-name>user</role-name>
+	</security-role>
+
+</web-app>

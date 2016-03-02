@@ -1,0 +1,16 @@
+<Context crossContext="true" reloadable="true">
+
+
+	<Realm className="org.apache.catalina.realm.JDBCRealm" driverName="org.postgresql.Driver" 
+		connectionURL="jdbc:postgresql://localhost/attendance" 
+		connectionName="postgres" connectionPassword="Baraza2011"
+		userTable="tomcat_users"   userNameCol="user_name" userCredCol="user_password" digest="md5"  
+		userRoleTable="tomcat_users" roleNameCol="user_role"></Realm>
+
+
+	<Resource name="jdbc/database" type="javax.sql.DataSource" auth="Container"
+		maxActive="150" maxIdle="50" maxWait="50" removeAbandoned="true" removeAbandonedTimeout="50" 
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost/attendance" 
+		username="postgres" password="Baraza2011"></Resource>
+
+</Context>
